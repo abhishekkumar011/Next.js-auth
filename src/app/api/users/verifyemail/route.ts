@@ -8,7 +8,6 @@ export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
     const { token } = reqBody;
-    console.log("Token" + token)
 
     if (!token) {
       return NextResponse.json({ error: "Token is reuired" });
@@ -22,8 +21,6 @@ export async function POST(request: NextRequest) {
     if (!user) {
       return NextResponse.json({ error: "Invalid Token" }, { status: 400 });
     }
-
-    console.log("User details", user);
 
     user.isVerified = true;
     user.verifyToken = undefined;
